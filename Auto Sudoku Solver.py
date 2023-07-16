@@ -1,7 +1,7 @@
 import pyautogui as pag
 import numpy as np
 import time
-
+#Sudoku.com to visualise
 sudokuPuzzleUnsolved = []
 
 while True:
@@ -20,17 +20,17 @@ time.sleep(1)
 
 def checkIfInsertionPossible(x, y, n):
     for i in range(0, 9):
-        if sudokuPuzzleUnsolved[i][x] == n and i != y: # Checks for number (n) in X columns
+        if sudokuPuzzleUnsolved[i][x] == n and i != y: #To check repeated number in a row
             return False
 
     for i in range(0, 9):
-        if sudokuPuzzleUnsolved[y][i] == n and i != x: # Checks for number (n) in X columns
+        if sudokuPuzzleUnsolved[y][i] == n and i != x: #To check repeated number in a column
             return False
 
     i = (x // 3) * 3
     j = (y // 3) * 3
     for X in range(i, i + 3):
-        for Y in range(j, j + 3):  # Checks for numbers in box(no matter the position, it finds the corner)
+        for Y in range(j, j + 3):  #To check repeated numnber in a 3X3 grid
             if sudokuPuzzleUnsolved[Y][X] == n:
                 return False
     return True
